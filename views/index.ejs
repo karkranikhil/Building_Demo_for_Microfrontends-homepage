@@ -1,12 +1,64 @@
-<!DOCTYPE html>
+
+<%/*<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Microfrontends Homepage</title>
   </head>
   <body>
-    <%- header %>
-    <%- productsList %>
-    <%- cart %>
+    <iframe frameBorder="0" width="100%" height="200" src="https://microfrontends-component-one.herokuapp.com/"></iframe>
+    <iframe frameBorder="0" width="100%" height="200" src="https://microfrontends-component-two.herokuapp.com/"></iframe>
+    <iframe frameBorder="0" width="100%" height="200" src="https://microfrontends-component-three.herokuapp.com/"></iframe>
+  </body>
+</html>*/%>
+
+
+<%/*<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Microfrontends Homepage</title>
+  </head>
+  <body>
+    <div class="load-app" data-url="header"></div>
+    <div class="load-app" data-url="products"></div>
+    <div class="load-app" data-url="cart"></div>
+    <script>
+      function loadPage (element) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            element.innerHTML = xmlHttp.responseText;
+            [].forEach.call(element.querySelectorAll('script'), function (nonExecutableScript) {
+              var script = document.createElement("script");
+              script.setAttribute("src", nonExecutableScript.src);
+              script.setAttribute("type", "text/javascript");
+              element.appendChild(script);
+              nonExecutableScript.parentNode.removeChild(nonExecutableScript);
+            });
+          }
+        };
+        xmlHttp.open("GET", element.dataset.url, true);
+        xmlHttp.send(null);
+      }
+      document.querySelectorAll('.load-app').forEach(loadPage);
+    </script>
+  </body>
+</html>*/%>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Microfrontends Homepage</title>
+    <link href="header" rel="import" async />
+    <link href="products-list" rel="import" async />
+    <link href="cart" rel="import" async />
+  </head>
+  <body>
+    <microfrontends-header></microfrontends-header>
+    <microfrontends-products-list></microfrontends-products-list>
+    <microfrontends-cart></microfrontends-cart>
   </body>
 </html>
